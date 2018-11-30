@@ -28,5 +28,5 @@ add_executable(autocar "main.cc")
 
 target_link_libraries(autocar 
     ${OpenCV_LIBRARIES}
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libzbar.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libzbar.so.0
 )
