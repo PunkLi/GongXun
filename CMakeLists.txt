@@ -24,7 +24,13 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
 )
 
-add_executable(autocar "main.cc")
+add_executable(autocar 
+    "main.cc"
+    "task1.cc"
+    "task2.cc"
+    "my_serial.cc"
+    "LinuxSerial.cc"
+)
 
 target_link_libraries(autocar 
     ${OpenCV_LIBRARIES}

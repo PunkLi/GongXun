@@ -17,26 +17,22 @@ namespace QR_mul
 		const int CV_QR_WEST = 3;
 	
 		// Creation of Intermediate 'Image' Objects required later
-		cv::Mat gray;								// To hold Grayscale Image
-		cv::Mat edges;								// To hold Grayscale Image
-		cv::Mat traces;								// For Debug Visuals
+
 		cv::Mat qr, qr_raw, qr_gray, qr_thres;
 
 	public:
-		QR_detecter(cv::Mat image): 
-			gray(image.size(), CV_MAKETYPE(image.depth(), 1)),
-			edges(image.size(), CV_MAKETYPE(image.depth(), 1)),
-			traces(image.size(), CV_8UC3)
+		bool detectQR(cv::Mat image, int DBG = 1/* Debug Flag*/) 
 		{
+			cv::Mat gray(image.size(), CV_MAKETYPE(image.depth(), 1));   // To hold Grayscale Image
+			cv::Mat edges(image.size(), CV_MAKETYPE(image.depth(), 1));  // To hold Grayscale Image
+			cv::Mat traces(image.size(), CV_8UC3);                       // For Debug Visuals
+
 			traces = Scalar(0, 0, 0);
 			qr_raw = Mat::zeros(100, 100, CV_8UC3);
 			qr = Mat::zeros(100, 100, CV_8UC3);
 			qr_gray = Mat::zeros(100, 100, CV_8UC1);
 			qr_thres = Mat::zeros(100, 100, CV_8UC1);
-		}
-	
-		bool detectQR(cv::Mat image, int DBG = 1/* Debug Flag*/) 
-		{
+
 			std::vector<std::vector<cv::Point>> contours;
 			std::vector<cv::Vec4i> hierarchy;
 			std::vector<cv::Point> pointsseq;				    // used to save the approximated sides of each contour
