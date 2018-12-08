@@ -32,21 +32,21 @@ void task2(cv::Mat src, std::vector<int>& key)
     
     // step4
     // Get Moments for all Contours and the mass centers
-	std::vector<cv::Moments> mu(contours.size());
-	std::vector<cv::Point2f> mc(contours.size());
+	// std::vector<cv::Moments> mu(contours.size());
+	// std::vector<cv::Point2f> mc(contours.size());
 
-	for (int i = 0; i < contours.size(); i++)
-	{
-		mu[i] = cv::moments(contours[i], false);
-		mc[i] = cv::Point2f(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
-	}
+	// for (int i = 0; i < contours.size(); i++)
+	// {
+	// 	mu[i] = cv::moments(contours[i], false);
+	// 	mc[i] = cv::Point2f(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
+	// }
 
-    std::vector<cv::Point> pointsseq;				    // used to save the approximated sides of each contour
-    cv::approxPolyDP(contours[i], pointsseq, arcLength(contours[i], true)*0.02, true);
-    if (pointsseq.size() < 10 ) // 条件1满足，则
-    {
-        // hierarchy[k][2]； // 没有父轮廓，也没有子轮廓
-        // 
-    }
+    // std::vector<cv::Point> pointsseq;				    // used to save the approximated sides of each contour
+    // cv::approxPolyDP(contours[i], pointsseq, arcLength(contours[i], true)*0.02, true);
+    // if (pointsseq.size() < 10 ) // 条件1满足，则
+    // {
+    //     // hierarchy[k][2]； // 没有父轮廓，也没有子轮廓
+    //     // 
+    // }
     cv::waitKey(1);
 }

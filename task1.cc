@@ -1,13 +1,20 @@
 
 #include "task.h"
 #include "zbar.h"
+#include "detectQR.hpp"
 
 bool task1(cv::Mat image, std::vector<int>& key)
 {
     zbar::ImageScanner scanner;
     scanner.set_config(zbar::ZBAR_NONE, zbar::ZBAR_CFG_ENABLE, 1);
     cv::Mat imageGray;
-    cv::cvtColor(image, imageGray, CV_RGB2GRAY);
+
+    QR_mul::QR_detecter qr;
+    if (qr.detectQR(image))
+        qr.qr_thres.copyTo(imageGray);
+    else
+        cv::cvtColor(image, imageGray, CV_RGB2GRAY);
+    
     int width = imageGray.cols;
     int height = imageGray.rows;
     uchar* raw = (uchar*)imageGray.data;

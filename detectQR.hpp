@@ -18,9 +18,9 @@ namespace QR_mul
 	
 		// Creation of Intermediate 'Image' Objects required later
 
+	public:
 		cv::Mat qr, qr_raw, qr_gray, qr_thres;
 
-	public:
 		bool detectQR(cv::Mat image, int DBG = 1/* Debug Flag*/) 
 		{
 			cv::Mat gray(image.size(), CV_MAKETYPE(image.depth(), 1));   // To hold Grayscale Image
